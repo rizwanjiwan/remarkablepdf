@@ -23,6 +23,8 @@ chmod 777 -R /app/tmp/
 #end /app vs /host_folder
 
 cd /app
+#install vendor files
+php ../composer.phar install
 #rm2pdf
 git clone https://github.com/rorycl/rm2pdf.git
 cd /app/rm2pdf
