@@ -1,0 +1,21 @@
+#SFTP creds
+SFTP_HOST=[IP to your remarkable]
+SFTP_USER=root
+SFTP_PASS=[root password for remarkable]
+SFTP_PATH=/home/root/.local/share/remarkable/xochitl
+#where do we store stuff
+DOWNLOAD_DIR=resources/downloads
+OUTPUT_DIR=resources/output
+SKIP_FOLDERS=Books
+
+#other paths
+LOG_FILE=/../../../../../logs/log
+TMP_DIR=/../../../../../tmp/
+
+#what env is this? (dev or prod)
+ENV=prod
+#debug level [DEBUG, ERROR, INFO] are common settings
+LOG_LEV=INFO
+#if you want to use sentry for critical/shutdown errors, set to true
+SENTRY_ON=false
+#SENTRY_DNS_PHP=https://[some string]@sentry.io/[some int]

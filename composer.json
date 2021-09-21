@@ -1,0 +1,23 @@
+{
+  "require":
+  {
+    "rizwanjiwan/commonpub":"dev-main",
+    "phpseclib/phpseclib": "3.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "jiwan\\remarkable\\": "src/jiwan/remarkable"
+    }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url":  "git@github.com:rizwanjiwan/commonpub.git"
+    }
+  ],
+  "config": {
+    "platform": {
+      "php": "8.0"
+    }
+  }
+}
