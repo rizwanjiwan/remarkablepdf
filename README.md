@@ -17,3 +17,6 @@ Run the docker image/create a container with run.sh. The container should boot u
 You could setup a cron or something to automatically do this on a regular basis and then script whatever you want to pull the pdfs to some backup.
 
 This was just for fun. So much more to do to make it actually generally useable but I may or may not do that work.
+
+
+Note: you should try to keep huge ebooks etc. in other folders and exclude them in the config. This is n not meant to pull down annotated ebooks or pdfs and trying to process those may cause the scripts to hang.
