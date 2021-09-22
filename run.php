@@ -8,6 +8,7 @@ Todo:
 */
 
 use jiwan\remarkable\RemarkableFiles;
+use JJG\Ping;
 use rizwanjiwan\common\classes\Config;
 use phpseclib3\Net\SFTP;
 use rizwanjiwan\common\classes\LogManager;
@@ -20,17 +21,29 @@ LogManager::consoleLogingOn();
 $downloadFolder=realpath(dirname(__FILE__)).'/'.Config::get('DOWNLOAD_DIR');
 $log=LogManager::createLogger('RUN');
 
-//https://phpseclib.com/docs/sftp
+try{
+    #https://github.com/geerlingguy/Ping
+    $log->info('Trying to ping reMarkable to ensure it\'s up...');
+    $ping=new Ping(Config::get('SFTP_HOST'));
+    $ping->setPort(22);
+    if($ping->ping('fsockopen')===false){
+        $log->error('reMarkable is unreachable!');
+        exit(0);
+    }
 
-$log->info('Downloading from reMarkable');
-$sftp = new SFTP(Config::get('SFTP_HOST'));
-$sftp->login(Config::get('SFTP_USER'), Config::get('SFTP_PASS'));
-download($sftp,Config::get('SFTP_PATH'),$downloadFolder);
-$log->info('Parsing downloaded files...');
-$files=new RemarkableFiles($downloadFolder);
-$log->info('Saving files as PDF....');
-$files->saveAll();
-
+    //https://phpseclib.com/docs/sftp
+    $log->info('Downloading from reMarkable...');
+    $sftp = new SFTP(Config::get('SFTP_HOST'));
+    $sftp->login(Config::get('SFTP_USER'), Config::get('SFTP_PASS'));
+    download($sftp,Config::get('SFTP_PATH'),$downloadFolder);
+    $log->info('Parsing downloaded files...');
+    $files=new RemarkableFiles($downloadFolder);
+    $log->info('Saving files as PDF....');
+    $files->saveAll();
+    $log->info('Done!');
+}catch(Exception $e){
+    $log->error('Exception: '.$e->getMessage().' -> '.$e->getTraceAsString());
+}
 
 /**
  * Download a source directory to a target folder

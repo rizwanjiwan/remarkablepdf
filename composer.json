@@ -2,7 +2,8 @@
   "require":
   {
     "rizwanjiwan/commonpub":"dev-main",
-    "phpseclib/phpseclib": "3.*"
+    "phpseclib/phpseclib": "3.*",
+    "geerlingguy/ping":"*"
   },
   "autoload": {
     "psr-4": {
