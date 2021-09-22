@@ -34,8 +34,8 @@ if [ ! -d "/app/rm2pdf" ]; then
   cd ..
 fi
 
-
-echo "tailing to stay alive..."
-tail -f logs/entrypoint.log
+php run.php
+#echo "tailing to stay alive..."
+#tail -f logs/entrypoint.log
 
 

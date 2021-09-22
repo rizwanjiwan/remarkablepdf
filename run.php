@@ -64,8 +64,11 @@ function download(SFTP $sftp,string $source, string $target)
                 $log->debug("Dir ".$name);
                 if(((strcmp($name,'.')!==0)&&(strcmp($name,'..')!==0))){
                     //make the local directory and then download the contents into there
-                    mkdir($target.'/'.$name);
-                    download($sftp,$source.'/'.$name,$target.'/'.$name);
+                    $newDir=$target.'/'.$name;
+                    if(file_exists($newDir)===false){
+                        mkdir($target.'/'.$name);
+                    }
+                    download($sftp,$source.'/'.$name,$newDir);
                     //make sure we are back in this directory for the rest of the loops
                     $sftp->chdir($source);
                 }
