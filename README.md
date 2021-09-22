@@ -16,4 +16,6 @@ Run the docker image/create a container with run.sh. Open a terminal and connect
 
 Go to the /app folder and run "php run.php" with your reMarkable on and connected to wifi. It will dump the notes into a bunch of pdfs in the output folder that you set in the config file.
 
+If you wanted to, you could replace the last line of entrypoint.sh just execute php run.php which would instead boot the container, run the pdf dump, and then exit.
+
 This was just for fun. So much more to do to make it actually generally useable but I may or may not do that work.
