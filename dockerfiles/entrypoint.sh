@@ -18,16 +18,22 @@ fi
 if [ ! -d "/app/tmp" ]; then
   mkdir "/app/tmp"
 fi
-chmod 777 -R /app/logs/
-chmod 777 -R /app/tmp/
-#end /app vs /host_folder
 
 cd /app
+
+#vendor files
+if [ ! -d "/app/vendor" ]; then
+  php ../composer.phar install
+fi
+
 #rm2pdf
-git clone https://github.com/rorycl/rm2pdf.git
-cd /app/rm2pdf
-go build
-cd ..
+if [ ! -d "/app/rm2pdf" ]; then
+  git clone https://github.com/rorycl/rm2pdf.git
+  cd /app/rm2pdf
+  go build
+  cd ..
+fi
+
 
 echo "tailing to stay alive..."
 tail -f logs/entrypoint.log
