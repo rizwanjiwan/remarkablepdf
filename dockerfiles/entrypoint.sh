@@ -34,12 +34,8 @@ if [ ! -d "/app/rm2pdf" ]; then
   cd ..
 fi
 
-#setup to run
-crontab -r
-crontab /app/dockerfiles/crontab.txt
-echo "first run..."
 php run.php
-echo "tailing to stay alive..."
-tail -f logs/entrypoint.log
+#echo "tailing to stay alive..."
+#tail -f logs/entrypoint.log
 
 

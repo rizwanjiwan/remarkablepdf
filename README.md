@@ -12,8 +12,11 @@ Copy config.example to config and edit the file in a text editor to enter your r
 
 ## Execution
 
-Run the docker image/create a container with run.sh. The container should boot up, run the pdf dump, and then run every 30 min to keep the pdfs up to date. It will not delete anything.
+Run the docker image/create a container with run.sh. The container should boot up, run the pdf dump, and then exit.
+
+You could setup a cron or something to automatically do this on a regular basis and then script whatever you want to pull the pdfs to some backup.
 
 This was just for fun. So much more to do to make it actually generally useable but I may or may not do that work.
 
-Note: you should try to keep huge ebooks etc. in other folders and exclude them in the config. This is not meant to pull down annotated ebooks or pdfs and trying to process those may cause the scripts to hang.
+
+Note: you should try to keep huge ebooks etc. in other folders and exclude them in the config. This is n not meant to pull down annotated ebooks or pdfs and trying to process those may cause the scripts to hang.
